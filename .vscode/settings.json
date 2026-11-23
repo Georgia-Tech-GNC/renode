@@ -1,4 +1,3 @@
 {
     "workspacePointer": "${workspaceFolder}",
-    "cmake.sourceDirectory": "/home/sam/shared/git/renode/tools/external_control_client",
 }
