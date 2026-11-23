@@ -9,6 +9,11 @@ ROOT_PATH="$(cd $(dirname $(readlink -f $0 2>/dev/null || echo $0)); echo $PWD)"
 
 OUTPUT_PATH="$ROOT_PATH/output/bin"
 
+if [[ "$(uname -s)" == "Linux" ]]; then
+    export GDK_BACKEND=x11
+    export LIBGL_ALWAYS_SOFTWARE=1
+fi
+
 TARGET="Release"
 QUIET=false
 TRACE=false
