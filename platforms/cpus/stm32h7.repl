@@ -91,6 +91,9 @@ adc3: Analog.STM32H7_ADC @ {
     dmaChannel: 115
     -> exti@75
 
+dac1: Analog.STM32_DAC @ sysbus 0x40007400
+    DMAReceive -> dmamux1@67
+
 bdma: DMA.STM32LDMA @ {
         sysbus 0x58025400;
         rcc RegistrationPeripheralAlias.BDMA
@@ -189,6 +192,21 @@ rtc: Timers.STM32F4_RTC @ {
     }
     AlarmIRQ -> exti@17
     WakeupIRQ -> exti@19
+
+spi1: SPI.STM32H7_SPI @ {
+    sysbus 0x40013000;
+    rcc RegistrationPeripheralAlias.SPI1
+}
+
+spi2: SPI.STM32H7_SPI @ {
+    sysbus 0x40003800;
+    rcc RegistrationPeripheralAlias.SPI2
+}
+
+spi3: SPI.STM32H7_SPI @ {
+    sysbus 0x40003C00;
+    rcc RegistrationPeripheralAlias.SPI3
+}
 
 spi4: SPI.STM32H7_SPI @ {
         sysbus 0x40013400;
@@ -797,14 +815,10 @@ sysbus:
         Tag <0x40015C00, 0x40015FFF> "SAI2"
         Tag <0x40015800, 0x40015BFF> "SAI1"
         Tag <0x40015000, 0x400153FF> "SPI5"
-        Tag <0x40013000, 0x400133FF> "SPI1_/_I2S1"
         Tag <0x4000A800, 0x4000ABFF> "CAN_CCU"
         Tag <0x40009400, 0x400097FF> "MDIOS"
         Tag <0x40009000, 0x400093FF> "OPAMP"
         Tag <0x40008800, 0x40008BFF> "SWPMI"
         Tag <0x40008400, 0x400087FF> "CRS"
-        Tag <0x40007400, 0x400077FF> "DAC1"
         Tag <0x40006C00, 0x40006FFF> "HDMI-CEC"
         Tag <0x40004000, 0x400043FF> "SPDIFRX1"
-        Tag <0x40003C00, 0x40003FFF> "SPI3_/_I2S3"
-        Tag <0x40003800, 0x40003BFF> "SPI2_/_I2S2"
